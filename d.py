@@ -34,26 +34,10 @@ async def redeem(ctx, license_key: str):
 
         await ctx.send(embed=embed)
 
-    except KeyAuthException as e:
-        embed = create_embed(
-            "Error Redeeming License",
-            f"An error occurred while redeeming the license: {str(e)}",
-            color=0xff0000
-        )
-        await ctx.send(embed=embed)
-
-    except ValueError as e:
+    except Exception as e:
         embed = create_embed(
             "Invalid License Key",
             f"The license key '{license_key}' is invalid or expired. Please check the key and try again.",
-            color=0xff0000
-        )
-        await ctx.send(embed=embed)
-
-    except Exception as e:
-        embed = create_embed(
-            "Error Redeeming License",
-            f"An unexpected error occurred while redeeming the license: {str(e)}",
             color=0xff0000
         )
         await ctx.send(embed=embed)
